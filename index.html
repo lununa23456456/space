@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111513">
+  <meta name="description" content="A source-backed, searchable field guide to planets, galaxies, and space.">
+  <title>Cosmos Fieldnotes | Space Knowledge Archive</title>
+  <style>
+    :root{color-scheme:dark;--bg:#111513;--panel:#191f1b;--panel2:#202721;--ink:#e7e9e0;--muted:#9da69a;--dim:#737e73;--line:#303932;--mint:#b8d5ac;--lime:#d4e99b;--coral:#e8a58c;--serif:Georgia,'Times New Roman',serif;--mono:'Courier New',monospace;font-family:'Trebuchet MS',Arial,sans-serif;color:var(--ink);background:var(--bg);font-synthesis:none;text-rendering:optimizeLegibility}
+    *{box-sizing:border-box}html{min-width:320px;scroll-behavior:smooth}body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(ellipse at 76% 14%,#27352a 0,transparent 36%),radial-gradient(ellipse at 10% 48%,#25271d 0,transparent 27%),var(--bg)}button,input,select{font:inherit}button,a,select{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--lime);outline-offset:3px}::selection{color:#111;background:var(--lime)}
+    .shell{max-width:1420px;padding:0 6%;margin:auto;position:relative;overflow:hidden}.stars{position:absolute;inset:0 0 auto;height:800px;pointer-events:none;z-index:0}.stars i{position:absolute;width:2px;height:2px;background:#e6ebd9;border-radius:50%;opacity:.35;animation:twinkle 4.8s ease-in-out infinite alternate}.stars i:nth-child(1){top:90px;left:14%;animation-delay:.4s}.stars i:nth-child(2){top:235px;left:46%;animation-delay:1.7s}.stars i:nth-child(3){top:330px;left:85%;animation-delay:2.5s}.stars i:nth-child(4){top:480px;left:23%;animation-delay:.8s}.stars i:nth-child(5){top:105px;left:79%;animation-delay:2s}.stars i:nth-child(6){top:590px;left:66%;animation-delay:3.1s}.stars i:nth-child(7){top:42px;left:57%;animation-delay:1.1s}.stars i:nth-child(8){top:360px;left:8%;animation-delay:3.7s}@keyframes twinkle{to{opacity:.85;transform:scale(1.5)}}
+    header{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:2}.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);font-size:16px;font-weight:700}.brand-icon{color:var(--lime);font-size:24px}.brand span:last-child span{font-weight:400;color:var(--muted)}nav{display:flex;align-items:center;gap:30px;height:100%}nav button{height:100%;position:relative;padding:0;border:0;background:none;color:var(--muted);font-size:12px;cursor:pointer}nav button:hover,nav button.active{color:var(--ink)}nav button.active:after{position:absolute;content:'';bottom:-1px;left:0;right:0;height:2px;background:var(--lime)}.live{display:flex;align-items:center;gap:8px;color:#aeb6a8;font:9px var(--mono);letter-spacing:1px}.live i{width:6px;height:6px;border-radius:50%;background:#a7c88f;box-shadow:0 0 9px #a7c88f}
+    main,.footer{position:relative;z-index:1}.hero{min-height:370px;display:grid;grid-template-columns:1fr .92fr;gap:8%;align-items:center;padding:55px 0 45px}.eyebrow,.kicker,.mono,.meta,.metric-label,.caption-label{font-family:var(--mono);letter-spacing:.7px}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--mint);font-size:9px}.eyebrow:before{content:'';width:22px;height:1px;background:var(--mint)}h1{margin:20px 0 14px;font-size:clamp(48px,6vw,74px);font-weight:500;line-height:.96;letter-spacing:0}h1 em{font:italic 500 1em var(--serif);color:var(--lime)}.intro{max-width:390px;color:#adb5aa;font-size:13px;line-height:1.8}.hero-meta{display:flex;align-items:center;gap:10px;margin-top:20px;color:var(--muted);font:9px var(--mono)}.hero-meta b{color:var(--mint);font-weight:400}.scene{height:255px;position:relative;overflow:hidden;border:1px solid #465247;background:radial-gradient(ellipse at 70% 26%,#47513d 0,transparent 32%),radial-gradient(ellipse at 20% 88%,#553e35 0,transparent 45%),linear-gradient(135deg,#1d2921,#121915 65%)}.scene:before{content:'';position:absolute;width:165px;height:165px;border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%);background:radial-gradient(circle at 31% 26%,#d2d8ac 0,#82977a 20%,#4b6557 52%,#21332b 82%);box-shadow:inset -18px -13px 24px #101713a6,0 0 70px #b6d4a333;animation:float 7s ease-in-out infinite alternate}.scene:after{content:'';position:absolute;width:245px;height:66px;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-19deg);border:1px solid #d6dfb678;border-radius:50%;box-shadow:0 0 18px #c8deab1c}@keyframes float{to{translate:0 -8px;rotate:3deg}}.scene-copy{position:absolute;z-index:1;left:18px;bottom:16px;display:grid;gap:5px;color:#fff;font:16px var(--serif)}.caption-label{font-size:8px;color:var(--lime)}.scene-num{position:absolute;top:14px;right:14px;padding:6px 8px;border:1px solid #ffffff44;background:#1119;color:#fff;font:9px var(--mono)}
+    .metrics{min-height:72px;display:grid;grid-template-columns:repeat(3,1fr) 1.8fr;align-items:center;border-block:1px solid var(--line)}.metric{display:flex;align-items:center;gap:12px;height:40px;padding-left:15px;border-right:1px solid var(--line)}.metric:first-child{padding-left:0}.metric strong{font:29px var(--serif);color:var(--lime)}.metric-label{font-size:8px;color:var(--muted)}.metric:last-child{justify-content:flex-end;border:0;color:var(--mint)}
+    .workspace{padding-top:48px}.workspace-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.kicker{font-size:8px;color:#9db58d;letter-spacing:1px}.workspace-head h2{margin:7px 0 0;font:26px var(--serif)}.coords{font:9px var(--mono);color:#909b8e}.tabs{display:flex;gap:3px;border-bottom:1px solid #485149}.tab{height:44px;display:flex;align-items:center;gap:8px;padding:0 16px;border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);font-size:11px;cursor:pointer}.tab:hover{color:var(--ink)}.tab.active{color:var(--lime);border-bottom-color:var(--lime)}.tab small{font:9px var(--mono);color:var(--mint)}.panel{min-height:320px;padding:22px 24px 18px;border:1px solid var(--line);border-top:0;background:#191f1bd9;animation:enter .25s ease-out}@keyframes enter{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}.panel-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}.panel-icon{width:34px;height:34px;display:grid;place-items:center;background:#29372c;border:1px solid #496047;color:var(--lime);font-size:17px}.panel-title h3{margin:0 0 4px;font-size:13px}.panel-title p{margin:0;color:var(--muted);font-size:10px}.search{height:48px;display:flex;align-items:center;border:1px solid #404a40;background:#111613}.search:focus-within{border-color:#afc99e}.search .magnify{margin:0 12px 0 15px;color:#9cad91;font-size:19px}.search input{height:100%;min-width:0;flex:1;border:0;outline:0;background:transparent;color:var(--ink);font-size:11px}.search input::placeholder,.filter input::placeholder{color:#788278}.search button,.action{height:34px;margin:0 6px;padding:0 12px;display:flex;align-items:center;gap:8px;border:0;background:var(--lime);color:#131711;font-size:10px;font-weight:700;cursor:pointer}.search button:hover,.action:hover{background:#e1efad}.suggestions{margin-top:22px}.suggestions label{color:#828e81;font:8px var(--mono);letter-spacing:.8px}.suggestion-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.suggestion-list button{min-height:30px;padding:0 10px;border:1px solid #374138;background:#1d251f;color:#bdc5b9;font-size:9px;cursor:pointer}.suggestion-list button:hover{border-color:#9fba8f;color:var(--lime)}.notice{display:flex;gap:7px;align-items:flex-start;margin-top:18px;padding-top:12px;border-top:1px solid #303831;color:#899387;font-size:9px;line-height:1.5}.notice b{color:var(--mint)}
+    .result-head,.gallery-head{display:flex;align-items:end;justify-content:space-between;margin:22px 0 10px}.result-head h3{margin:5px 0 0;font:18px var(--serif)}.result-count,.gallery-head>span:last-child{font:8px var(--mono);color:#929e8c}.results{display:grid;gap:8px}.result{display:grid;grid-template-columns:35px 1fr;gap:10px;padding:14px;border:1px solid #303932;background:#141a16}.result-index{font:15px var(--serif);color:#94a58a}.result-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:5px;font:8px var(--mono);color:var(--mint)}.result-meta .source-type{color:#818d80;font-size:7px}.result h4{margin:0 0 6px;font-size:12px}.result p{margin:0;color:#aab2a7;font-size:10px;line-height:1.65}.result a{display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:#c2d5a9;font-size:9px;text-decoration:none}.result a:hover,.credit a:hover{color:var(--lime)}.empty{min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#aab2a6}.empty .big{font-size:25px;color:var(--mint)}.empty h3{margin:10px 0 6px;font:19px var(--serif);color:var(--ink)}.empty p{max-width:390px;margin:0;color:var(--muted);font-size:10px;line-height:1.6}
+    .gallery-head{margin-top:20px;font:8px var(--mono);letter-spacing:.6px;color:#8b9788}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.image-card{overflow:hidden;border:1px solid #313c33;background:#121814;color:var(--ink);text-decoration:none;transition:transform .2s,border-color .2s}.image-card:hover{transform:translateY(-2px);border-color:#a9c197}.image-card img{display:block;width:100%;height:125px;object-fit:cover;background:#202a23}.image-card h4{display:-webkit-box;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:28px;margin:9px 10px 6px;font-size:9px;line-height:1.5;font-weight:500}.image-card small{display:block;margin:0 10px 10px;color:#899486;font:8px var(--mono)}.credit{margin:16px 0 0;color:#899486;font:8px var(--mono)}.credit a{color:#b8cca6;text-decoration:none}.loading{min-height:180px;display:grid;place-items:center;color:var(--mint);font-size:11px}.spinner{display:inline-block;margin-right:8px;animation:spin 1.3s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .library-controls{display:flex;gap:8px;margin-bottom:14px}.filter{height:40px;display:flex;align-items:center;gap:9px;padding:0 11px;border:1px solid #394239;background:#111613;color:#9eae93;flex:1}.filter input{height:100%;width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);font-size:10px}.filter select{height:100%;width:100%;border:0;outline:0;background:transparent;color:#c7cec2;font-size:10px}.filter option{background:#191f1b}.filter.topic{max-width:190px}.library-count{margin:0 0 5px;color:#849080;font:8px var(--mono)}.library-list{border-top:1px solid #303932}.library-item{min-height:77px;display:grid;grid-template-columns:31px 1fr 32px;gap:10px;align-items:center;padding:11px 7px;border-bottom:1px solid #303932}.library-index{align-self:start;padding-top:4px;color:#8ea183;font:14px var(--serif)}.library-item .category{color:var(--mint);font:8px var(--mono)}.library-item h4{margin:4px 0;font-size:11px}.library-item p{margin:0;color:#a2aa9f;font-size:9px;line-height:1.5}.library-item>a{width:28px;height:28px;display:grid;place-items:center;border:1px solid #39443a;color:var(--mint);text-decoration:none}.library-item>a:hover{border-color:var(--mint);color:var(--lime)}
+    .outro{display:flex;align-items:center;gap:14px;margin-top:30px;padding:19px 0;border-top:1px solid var(--line)}.outro-icon{width:38px;height:38px;display:grid;place-items:center;border:1px solid #52624a;border-radius:50%;color:var(--lime);font-size:19px}.outro p{margin:5px 0 0;font:14px var(--serif)}.outro button{margin-left:auto;padding:9px 11px;border:1px solid #414b40;background:none;color:#cad8b9;font-size:9px;cursor:pointer}.outro button:hover{border-color:var(--mint);color:var(--lime)}.footer{min-height:62px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);color:#858f83;font:8px var(--mono)}.footer .brand{font:700 12px 'Trebuchet MS',Arial,sans-serif}
+    @media(max-width:800px){.shell{padding:0 5%}.hero{gap:5%}.scene{height:225px}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.metric{padding-left:9px;gap:7px}.metric strong{font-size:25px}}
+    @media(max-width:600px){.shell{padding:0 18px}header{height:auto;min-height:60px;flex-wrap:wrap;padding-top:11px}.brand{font-size:14px}nav{order:3;width:100%;height:40px;gap:23px}nav button{font-size:10px}.live{font-size:8px}.hero{grid-template-columns:1fr;gap:22px;padding:38px 0 28px}.hero h1{font-size:54px}.intro{font-size:12px}.scene{height:190px}.metrics{grid-template-columns:repeat(3,1fr);min-height:65px}.metric{display:grid;gap:2px;padding-left:8px}.metric:first-child{padding-left:0}.metric strong{font-size:23px}.metric-label{font-size:7px}.metric:last-child{display:none}.workspace{padding-top:35px}.workspace-head h2{font-size:23px}.coords{max-width:110px;text-align:right;font-size:7px;line-height:1.5}.tabs{gap:0}.tab{height:42px;padding:0 9px;gap:5px;font-size:9px}.tab small{font-size:8px}.panel{padding:17px 12px 14px}.panel-title{gap:9px}.panel-title h3{font-size:12px}.panel-title p{font-size:9px}.search{height:44px}.search .magnify{margin:0 8px;font-size:16px}.search input{font-size:10px}.search button{gap:4px;padding:0 8px;font-size:9px}.suggestion-list{gap:6px}.suggestion-list button{font-size:8px;padding:0 7px}.notice{font-size:8px}.result{grid-template-columns:24px 1fr;gap:5px;padding:11px 8px}.result p{font-size:9px}.result-meta{gap:5px 8px}.result-meta .source-type{font-size:6px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.image-card img{height:103px}.library-controls{flex-direction:column}.filter{height:38px}.filter.topic{max-width:none}.library-item{grid-template-columns:23px 1fr 28px;gap:7px;padding:10px 3px}.library-item p{font-size:8px}.outro{gap:9px}.outro-icon{width:32px;height:32px}.outro .kicker{font-size:7px}.outro p{max-width:180px;font-size:12px}.outro button{max-width:105px;padding:8px 6px;font-size:8px;line-height:1.4}.footer{flex-wrap:wrap;padding:11px 0}.footer>span:nth-child(2){display:none}}
+    @media(max-width:360px){.shell{padding:0 14px}.hero h1{font-size:48px}.tab{padding:0 6px;font-size:8px}.search button span{display:none}.search button{width:32px;justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+  <style>
+    .identify-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:15px 0}.upload-control,.identify-action{min-height:38px;display:inline-flex;align-items:center;gap:8px;padding:0 13px;border:1px solid #53614f;background:#202820;color:var(--mint);font-size:10px;cursor:pointer}.upload-control input{max-width:210px;color:var(--muted);font-size:9px}.identify-action{border-color:transparent;background:var(--lime);color:#111711;font-weight:700}.identify-action:disabled{background:#303830;color:#939c90;cursor:not-allowed}.identify-action.busy:before{content:'';width:12px;height:12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite}.identify-message{margin:10px 0;color:var(--muted);font-size:10px;line-height:1.6}.identify-error{color:var(--coral)}.identify-output{display:grid;grid-template-columns:minmax(140px,260px) minmax(0,1fr);gap:18px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}.identify-preview{width:100%;max-height:230px;object-fit:contain;object-position:top left;background:#101512}.identify-output h4{margin:0 0 7px;font:500 15px var(--serif);color:var(--ink)}.identify-explanation{padding:12px 0;border-top:1px solid #303932}.identify-explanation p{margin:0;color:#aab2a7;font-size:10px;line-height:1.7}.identify-match{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid #303932}.identify-match img{width:96px;height:72px;object-fit:cover;background:#101512}.identify-match a{display:inline-block;color:#c2d5a9;font-size:9px;text-decoration:none}.identify-match a:hover{color:var(--lime)}
+    @media(max-width:600px){.identify-output{grid-template-columns:minmax(0,1fr)}.identify-preview{max-height:210px}.identify-match{grid-template-columns:76px minmax(0,1fr);gap:9px}.identify-match img{width:76px;height:65px}.upload-control input{max-width:150px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <header>
+      <a class="brand" href="#top"><span class="brand-icon">◎</span><span>cosmos<span>fieldnotes</span></span></a>
+      <nav aria-label="Main navigation"><button class="active" data-tab="ask">Ask the archive</button><button data-tab="images">Image atlas</button><button data-tab="identify">Identify image</button><button data-tab="library">Field guide</button></nav>
+      <div class="live"><i></i> OPEN ARCHIVE</div>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div><div class="eyebrow">AN EXPLORER’S INDEX TO THE UNIVERSE</div><h1>Look closer.<br><em>Think cosmic.</em></h1><p class="intro">A field guide to planets, galaxies, and the wild architecture of space. Ask a question, follow the sources, keep wandering.</p><div class="hero-meta"><b>▦</b> <span id="note-total">34</span> SOURCED NOTES <span>·</span> NASA IMAGE ARCHIVE CONNECTED</div></div>
+        <div class="scene" aria-label="An imagined ringed planet beneath a star field"><div class="scene-num">FIELD NOTE · 01</div><div class="scene-copy"><span class="caption-label">A VIEW FROM THE ARCHIVE</span><span>Somewhere, among the stars</span></div></div>
+      </section>
+      <section class="metrics"><div class="metric"><strong id="metric-notes">34</strong><span class="metric-label">FIELD NOTES</span></div><div class="metric"><strong>08</strong><span class="metric-label">PLANETS</span></div><div class="metric"><strong>04</strong><span class="metric-label">GALAXY TYPES</span></div><div class="metric"><span class="metric-label">A SMALL CORNER OF A BIG UNIVERSE</span> ↘</div></section>
+      <section class="workspace">
+        <div class="workspace-head"><div><div class="kicker">YOUR OBSERVATION DECK</div><h2>Where to, stargazer?</h2></div><div class="coords">◉ &nbsp; LOCAL GROUP · 00° 42′ 44″</div></div>
+        <div class="tabs" role="tablist"><button class="tab active" role="tab" aria-selected="true" data-tab="ask">✳ &nbsp; Ask the archive</button><button class="tab" role="tab" aria-selected="false" data-tab="images">▧ &nbsp; Image atlas</button><button class="tab" role="tab" aria-selected="false" data-tab="identify">⌕ &nbsp; Identify image</button><button class="tab" role="tab" aria-selected="false" data-tab="library">▤ &nbsp; Field guide <small id="tab-count">34</small></button></div>
+        <section id="ask-panel" class="panel">
+          <div class="panel-title"><div class="panel-icon">⌕</div><div><h3>Ask a question about space</h3><p>Search across the archive. Every note comes with its source.</p></div></div>
+          <form id="ask-form" class="search"><span class="magnify">⌕</span><input id="question" aria-label="Search the space archive" placeholder="Try ‘what makes a galaxy spiral?’"><button type="submit">Explore <span>↗</span></button></form>
+          <div id="suggestions" class="suggestions"><label>A FEW PLACES TO BEGIN</label><div class="suggestion-list"><button>Why is Venus hotter than Mercury?</button><button>What kinds of galaxies exist?</button><button>How do we find exoplanets?</button><button>What is a light-year?</button></div></div>
+          <div id="answer" aria-live="polite"></div>
+          <div class="notice"><b>✓</b><span>Results are retrieved from the local archive, not generated. Follow each source for details.</span></div>
+        </section>
+        <section id="images-panel" class="panel" hidden>
+          <div class="panel-title"><div class="panel-icon">▧</div><div><h3>Search the NASA image atlas</h3><p>Explore public images from NASA’s searchable media collection.</p></div></div>
+          <form id="image-form" class="search"><span class="magnify">⌕</span><input id="image-query" aria-label="Search NASA images" value="planets" placeholder="Planets, nebulae, missions..."><button type="submit">Find images <span>↗</span></button></form>
+          <div class="gallery-head"><span>NASA IMAGE AND VIDEO LIBRARY</span><span id="gallery-count">SEARCH WHEN READY</span></div><div id="gallery"></div><p class="credit">NASA images and metadata: <a href="https://images.nasa.gov/" target="_blank" rel="noreferrer">NASA Images API ↗</a></p>
+        </section>
+        <section id="identify-panel" class="panel" hidden>
+          <div class="panel-title"><div class="panel-icon">⌕</div><div><h3>Identify a space image</h3><p>Upload an image to compare visual matches with the sourced field guide.</p></div></div>
+          <p class="identify-message">Your image is analyzed in this browser and is not uploaded. An image model downloads the first time you use this feature, so an internet connection is needed.</p>
+          <div class="identify-controls"><label class="upload-control">Choose image <input id="space-image" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" aria-label="Choose a space image"></label><button id="identify-button" class="identify-action" type="button" disabled>Analyze image</button></div>
+          <p id="identify-status" class="identify-message" aria-live="polite">Select an image to begin.</p>
+          <div id="identify-results"></div>
+        </section>
+        <section id="library-panel" class="panel" hidden>
+          <div class="panel-title"><div class="panel-icon">▤</div><div><h3>The field guide</h3><p>Browse source-backed notes in this growing archive.</p></div></div>
+          <div class="library-controls"><label class="filter">⌕ <input id="library-query" aria-label="Filter field guide" placeholder="Filter notes..."></label><label class="filter topic"><select id="category" aria-label="Filter by topic"><option>All topics</option></select></label></div>
+          <div id="library-count" class="library-count"></div><div id="library-list" class="library-list"></div>
+        </section>
+      </section>
+      <section class="outro"><div class="outro-icon">◎</div><div><div class="kicker">THE UNIVERSE IS STILL UNFOLDING</div><p>Every answer is an invitation to ask a better question.</p></div><button id="new-search">Start another search ↗</button></section>
+    </main>
+    <footer class="footer"><a class="brand" href="#top"><span class="brand-icon">◎</span><span>cosmos<span>fieldnotes</span></span></a><span>Built for the endlessly curious.</span><span>NASA · PUBLIC ARCHIVE</span></footer>
+  </div>
+  <script>
+    const notes = [
+      {title:'Our solar system',category:'Solar system',summary:'The Sun and everything gravitationally bound to it make up the solar system.',text:'The solar system formed about 4.6 billion years ago. It includes the Sun, eight planets, dwarf planets, moons, asteroids, comets, and icy objects. The four inner planets are rocky; the four outer planets are giant worlds. The Kuiper Belt lies beyond Neptune.',source:'NASA Solar System Exploration',url:'https://science.nasa.gov/solar-system/solar-system-facts/'},
+      {title:'Mercury',category:'Planet',summary:'The smallest planet and the closest to the Sun, with an iron-rich core.',text:'Mercury is a rocky world with a heavily cratered surface and almost no atmosphere to retain heat. Despite being closest to the Sun, it is not the hottest planet. Its long solar day lasts 176 Earth days, while one orbit takes 88 Earth days. Water ice exists in permanently shadowed polar craters.',source:'NASA Mercury Facts',url:'https://science.nasa.gov/mercury/facts/'},
+      {title:'Venus',category:'Planet',summary:'A rocky planet wrapped in a thick carbon-dioxide atmosphere and sulfuric-acid clouds.',text:'Venus is the hottest planet because its dense atmosphere traps heat in a powerful greenhouse effect. Surface pressure is about 90 times Earth sea-level pressure. Venus rotates slowly and backward compared with most planets.',source:'NASA Venus Facts',url:'https://science.nasa.gov/venus/facts/'},
+      {title:'Earth',category:'Planet',summary:'The only world currently known to host life, with stable surface liquid water.',text:'Earth is a rocky planet with a nitrogen- and oxygen-rich atmosphere, a global magnetic field, and abundant liquid water on its surface. Its atmosphere and magnetic field help shield the surface from harmful radiation. Earth formed about 4.5 billion years ago and has one large natural satellite, the Moon.',source:'NASA Earth Facts',url:'https://science.nasa.gov/earth/facts/'},
+      {title:'Mars',category:'Planet',summary:'A cold desert world with ancient river valleys, volcanoes, and evidence of past water.',text:'Mars has a thin carbon-dioxide atmosphere and seasons, polar ice caps, dust storms, and Olympus Mons, the largest volcano known in the solar system. Ancient terrain shows liquid water once flowed across its surface. Robotic orbiters, landers, and rovers study whether past environments could have supported microbial life.',source:'NASA Mars Facts',url:'https://science.nasa.gov/mars/facts/'},
+      {title:'Jupiter',category:'Planet',summary:'The largest planet, a gas giant with powerful storms and a large family of moons.',text:'Jupiter is the largest planet, a gas giant made mostly of hydrogen and helium with no solid surface like Earth. It orbits about 5.2 times farther from the Sun than Earth and completes one orbit in about 11.9 Earth years. Its cloud bands contain enormous storms, including the Great Red Spot, a long-lived storm larger than Earth. Jupiter has a faint ring system, many moons, and a powerful magnetic field. NASA’s Juno mission studies its atmosphere, gravity, magnetic field, and interior.',source:'NASA Jupiter Facts',url:'https://science.nasa.gov/jupiter/facts/'},
+      {title:'Jupiter’s major moons',category:'Moon',summary:'Io, Europa, Ganymede, and Callisto are the four large Galilean moons.',text:'Io is intensely volcanic, while Europa has an icy crust over a likely global ocean. Ganymede is the largest moon in the solar system and has its own magnetic field. Ancient, cratered Callisto preserves a record of impacts. NASA missions study these distinct worlds and their geology.',source:'NASA Jupiter Moons',url:'https://science.nasa.gov/jupiter/moons/'},
+      {title:'Saturn',category:'Planet',summary:'A gas giant best known for a broad ring system made mostly of ice.',text:'Saturn is a hydrogen-and-helium giant with spectacular rings composed of countless pieces of ice and rock. Its density is lower than water. Saturn has many moons; Titan has methane lakes and Enceladus jets water-rich material from a subsurface ocean.',source:'NASA Saturn Facts',url:'https://science.nasa.gov/saturn/facts/'},
+      {title:'Uranus',category:'Planet',summary:'An ice giant that rotates on its side, likely after a major early collision.',text:'Uranus has a blue-green appearance from methane in its atmosphere and is classified as an ice giant. Its rotation axis is tilted by about 98 degrees, producing extreme seasonal patterns. Its atmosphere contains hydrogen, helium, and methane above a hot, dense interior.',source:'NASA Uranus Facts',url:'https://science.nasa.gov/uranus/facts/'},
+      {title:'Neptune',category:'Planet',summary:'A distant ice giant with fast winds and a deep blue atmosphere.',text:'Neptune is the most distant major planet from the Sun. It is an ice giant with hydrogen, helium, and methane in its atmosphere and active weather, including very fast winds. The moon Triton orbits backward and may be a captured Kuiper Belt object. A Neptune year lasts about 165 Earth years.',source:'NASA Neptune Facts',url:'https://science.nasa.gov/neptune/facts/'},
+      {title:'Pluto and dwarf planets',category:'Dwarf planet',summary:'Pluto is a small icy world in the Kuiper Belt and one of five recognized dwarf planets.',text:'A dwarf planet orbits the Sun, is nearly round, has not cleared its orbital neighborhood, and is not a moon. Pluto shares its region with other Kuiper Belt objects. The recognized dwarf planets are Pluto, Ceres, Haumea, Makemake, and Eris.',source:'NASA Dwarf Planets',url:'https://science.nasa.gov/dwarf-planets/'},
+      {title:'Earth’s Moon',category:'Moon',summary:'Earth’s natural satellite likely formed after a giant impact early in solar-system history.',text:'The Moon is about one-quarter Earth’s diameter and is tidally locked, so nearly the same hemisphere faces Earth. Its surface preserves impact craters and volcanic plains. Lunar samples and measurements reveal a complex history.',source:'NASA Moon Facts',url:'https://science.nasa.gov/moon/facts/'},
+      {title:'Exoplanets',category:'Beyond our system',summary:'Planets orbiting stars beyond the Sun, found by methods including transits and radial velocity.',text:'A transit occurs when a planet passes in front of its star, causing a small dip in observed brightness. The radial-velocity method detects a star’s wobble caused by a planet’s gravity. These techniques reveal planet sizes, orbits, and masses; studying atmospheres can offer clues about composition, but does not by itself prove life.',source:'NASA Exoplanet Exploration',url:'https://science.nasa.gov/exoplanets/overview/'},
+      {title:'Habitable zones',category:'Beyond our system',summary:'A star’s habitable zone is where surface liquid water could be possible under suitable conditions.',text:'The habitable zone depends on a star’s energy and distance, but location alone does not establish that a planet is habitable. Atmosphere, clouds, magnetic environment, geology, and the star’s variability all matter. Worlds outside the zone may still have subsurface oceans warmed by internal heat or tidal forces.',source:'NASA Exoplanets',url:'https://science.nasa.gov/exoplanets/what-is-an-exoplanet/'},
+      {title:'Asteroids',category:'Small bodies',summary:'Rocky remnants from solar-system formation, most orbiting between Mars and Jupiter.',text:'Asteroids range from small rubble piles to bodies hundreds of kilometers wide. Their compositions preserve clues about the early solar system. Near-Earth asteroids have orbits that bring them relatively close to Earth; surveys track these objects to assess and refine impact-risk estimates.',source:'NASA Asteroids',url:'https://science.nasa.gov/solar-system/asteroids/'},
+      {title:'Comets',category:'Small bodies',summary:'Icy bodies that can grow glowing comas and tails as sunlight warms them.',text:'Comets are leftovers from the cold outer regions of solar-system formation. As a comet approaches the Sun, its ice turns directly into gas, carrying dust into a coma and tails that point generally away from the Sun under sunlight and solar wind. Their material records early planetary ingredients.',source:'NASA Comets',url:'https://science.nasa.gov/solar-system/comets/'},
+      {title:'The Milky Way',category:'Galaxy',summary:'Our home galaxy is a barred spiral containing hundreds of billions of stars.',text:'The Milky Way is a barred spiral galaxy with a central bar, spiral arms, a central supermassive black hole called Sagittarius A*, and a halo of stars and dark matter. The Sun sits in the Orion Spur, roughly 26,000 light-years from the galactic center. Its disk spans about 100,000 light-years.',source:'NASA: Types of Galaxies',url:'https://science.nasa.gov/universe/galaxies/types/'},
+      {title:'Spiral galaxies',category:'Galaxy',summary:'Rotating disks with spiral arms, gas, dust, and active star formation.',text:'Spiral galaxies have flattened disks and winding arms that extend from a central bulge; some, like the Milky Way, have a bar. The arms are regions where gas and dust can gather and form stars. Their overall shape can be influenced by interactions with nearby galaxies.',source:'NASA: Types of Galaxies',url:'https://science.nasa.gov/universe/galaxies/types/'},
+      {title:'Elliptical galaxies',category:'Galaxy',summary:'Smooth, rounded or oval galaxies that generally contain older stars and little cool gas.',text:'Elliptical galaxies range from nearly spherical to elongated. Many have little cold gas and dust for new star formation, so their light is often dominated by older stars. They vary from dwarf ellipticals to enormous galaxies in dense clusters.',source:'NASA: Types of Galaxies',url:'https://science.nasa.gov/universe/galaxies/types/'},
+      {title:'Irregular galaxies',category:'Galaxy',summary:'Galaxies without a clear spiral or elliptical structure, often shaped by gravity.',text:'Irregular galaxies lack the ordered disk or smooth profile of other major categories. Gravitational encounters can distort them and trigger bursts of star formation. Some are small satellite galaxies, while others are larger systems whose structure has been disrupted.',source:'NASA: Types of Galaxies',url:'https://science.nasa.gov/universe/galaxies/types/'},
+      {title:'Andromeda Galaxy',category:'Galaxy',summary:'The nearest large galaxy to the Milky Way, about 2.5 million light-years away.',text:'Andromeda, also called M31, is a large spiral galaxy and a major member of the Local Group. It is approaching the Milky Way, and models predict the galaxies will interact and eventually merge over several billion years. Andromeda can be seen with the unaided eye from dark locations.',source:'NASA Andromeda Galaxy',url:'https://science.nasa.gov/universe/galaxies/andromeda-galaxy/'},
+      {title:'Galaxy groups and clusters',category:'Galaxy',summary:'Galaxies gather into gravitationally bound groups and larger clusters.',text:'The Milky Way, Andromeda, and dozens of smaller galaxies belong to the Local Group. Rich galaxy clusters can contain thousands of galaxies, hot gas, and large amounts of dark matter. On the largest scales, groups and clusters connect through filaments to form the cosmic web.',source:'NASA Galaxies',url:'https://science.nasa.gov/universe/galaxies/'},
+      {title:'Black holes',category:'Cosmic objects',summary:'Regions where gravity is so strong that beyond the event horizon, not even light escapes.',text:'Black holes can form when massive stars collapse, and supermassive black holes reside in many galaxy centers. Their event horizons mark a boundary, not a solid surface. Astronomers infer black holes from the motion and radiation of nearby matter and from gravitational waves produced by mergers.',source:'NASA Black Holes',url:'https://science.nasa.gov/universe/black-holes/'},
+      {title:'Dark matter',category:'Cosmic objects',summary:'Invisible matter inferred from its gravitational effects on galaxies and large-scale structure.',text:'Dark matter does not emit, reflect, or absorb light in a way we can detect directly. Its gravitational influence helps explain galaxy rotation, gravitational lensing, and the growth of cosmic structure. Its particle nature remains unknown; it is distinct from ordinary matter and dark energy.',source:'NASA Dark Matter and Dark Energy',url:'https://science.nasa.gov/universe/dark-matter-dark-energy/'},
+      {title:'Dark energy',category:'Cosmology',summary:'The name for whatever is driving the observed accelerated expansion of the universe.',text:'Observations of distant supernovae indicate that the universe’s expansion is accelerating. Dark energy is the term for the unknown cause. It is not the same as dark matter, and its physical nature remains one of cosmology’s major open questions.',source:'NASA Dark Matter and Dark Energy',url:'https://science.nasa.gov/universe/dark-matter-dark-energy/'},
+      {title:'Nebulae',category:'Cosmic objects',summary:'Vast clouds of gas and dust where stars form or leave material behind.',text:'A nebula may be a star-forming cloud, the expanding remains of a dying star, or gas lit by nearby stars. These regions contain elements that can become part of new stars and planetary systems. Different wavelengths reveal different temperatures and chemical components.',source:'NASA Nebulae',url:'https://science.nasa.gov/universe/nebulae/'},
+      {title:'The Sun',category:'Stars',summary:'Our star is a hot ball of plasma whose gravity holds the solar system together.',text:'The Sun is a G-type main-sequence star about 4.6 billion years old. It generates energy by fusing hydrogen into helium in its core. Its magnetic activity produces sunspots, flares, and coronal mass ejections, while the solar wind flows throughout the heliosphere. Sunlight takes about eight minutes to reach Earth.',source:'NASA Sun Facts',url:'https://science.nasa.gov/sun/facts/'},
+      {title:'Star colors and types',category:'Stars',summary:'A star’s color is related to its surface temperature, from hot blue stars to cooler red stars.',text:'Astronomers classify stellar spectra with the sequence O, B, A, F, G, K, and M, running from hottest to coolest. A star’s mass strongly influences how quickly it uses its fuel and what remnant it leaves behind. Color is a useful clue to temperature, but distance and brightness are also needed to understand a star fully.',source:'NASA Stars',url:'https://science.nasa.gov/universe/stars/'},
+      {title:'How stars live and die',category:'Stars',summary:'A star’s mass determines its lifetime and its path from birth to its final remnant.',text:'Stars form as gravity pulls dense regions of gas and dust together. During most of a star’s life, fusion in its core balances inward gravity. Sun-like stars become red giants and leave white dwarfs; much more massive stars can explode as supernovae and leave neutron stars or black holes.',source:'NASA Stars',url:'https://science.nasa.gov/universe/stars/'},
+      {title:'Supernovae',category:'Stars',summary:'Powerful stellar explosions that scatter newly made elements into space.',text:'A supernova can occur when a massive star’s core collapses or when a white dwarf undergoes a runaway thermonuclear explosion. These events create and distribute many elements and can briefly outshine entire galaxies. Their expanding remnants interact with surrounding gas and help shape future star formation.',source:'NASA Supernovae',url:'https://science.nasa.gov/universe/supernovae/'},
+      {title:'What is a light-year?',category:'Astronomy basics',summary:'A light-year is a unit of distance: how far light travels in one year.',text:'Light travels about 300,000 kilometers per second in a vacuum. In one year it covers about 9.46 trillion kilometers, or 5.88 trillion miles. Because light takes time to travel, looking farther into space also means looking further back in time.',source:'NASA: What Is a Light-Year?',url:'https://science.nasa.gov/solar-system/what-is-a-light-year/'},
+      {title:'The expanding universe',category:'Cosmology',summary:'The universe has expanded from a hotter, denser early state for about 13.8 billion years.',text:'The Big Bang model describes the expansion of space from an early hot, dense state; it is not an explosion into pre-existing empty space. Evidence includes the expansion of galaxies and the cosmic microwave background, the cooled afterglow of the early universe. The universe’s age is estimated at about 13.8 billion years.',source:'NASA The Big Bang',url:'https://science.nasa.gov/universe/the-big-bang/'},
+      {title:'The cosmic web',category:'Cosmology',summary:'Galaxies and dark matter form a vast network of filaments, sheets, and voids.',text:'On very large scales, matter is not distributed uniformly. Gravity draws matter into filaments and nodes where galaxy groups and clusters form, while comparatively empty voids lie between them. This large-scale pattern is called the cosmic web and grew from tiny early-universe density differences.',source:'NASA Galaxies',url:'https://science.nasa.gov/universe/galaxies/'},
+      {title:'James Webb Space Telescope',category:'Observatories',summary:'An infrared observatory studying the early universe, galaxies, stars, and exoplanets.',text:'The James Webb Space Telescope observes primarily infrared light, allowing it to study faint, distant galaxies and peer through dust in star-forming regions. Its instruments can analyze light from exoplanet atmospheres. Webb complements observatories such as Hubble.',source:'NASA James Webb Space Telescope',url:'https://science.nasa.gov/mission/webb/'},
+      {title:'Hubble Space Telescope',category:'Observatories',summary:'A space observatory whose long-running observations transformed astronomy.',text:'Hubble observes the universe in ultraviolet, visible, and near-infrared light from above Earth’s atmosphere. Its observations have helped measure the expansion rate of the universe and revealed details of planets, nebulae, galaxies, and distant cosmic history. Webb and Hubble provide complementary views.',source:'NASA Hubble Space Telescope',url:'https://science.nasa.gov/mission/hubble/'},
+      {title:'Auroras',category:'Earth and space',summary:'Shimmering lights created when charged particles interact with a planet’s upper atmosphere.',text:'At Earth, particles guided by the magnetic field collide with atmospheric gases, which then emit light. Oxygen commonly creates green and red auroras; nitrogen can produce blue and purple hues. Auroras also occur on other planets with atmospheres and magnetic environments.',source:'NASA Auroras',url:'https://science.nasa.gov/sun/auroras/'},
+      {title:'Space weather',category:'Earth and space',summary:'Solar flares and coronal mass ejections can disturb space around Earth and affect technology.',text:'The Sun continuously releases particles and magnetic fields in the solar wind. Flares and coronal mass ejections can produce stronger disturbances, creating geomagnetic storms, bright auroras, and potential impacts to satellites, radio communications, navigation, and power infrastructure.',source:'NASA Space Weather',url:'https://science.nasa.gov/heliophysics/space-weather/'}
+    ];
+    const byId = id => document.getElementById(id);
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const stop = new Set(['about','after','also','and','are','can','does','for','from','have','into','its','that','the','their','there','these','this','what','when','where','which','with','your']);
+    byId('note-total').textContent = byId('metric-notes').textContent = byId('tab-count').textContent = notes.length;
+    const categories = ['All topics', ...new Set(notes.map(note => note.category))];
+    byId('category').innerHTML = categories.map(category => `<option>${escapeHtml(category)}</option>`).join('');
+
+    function retrieve(query) {
+      const terms = query.toLowerCase().match(/[a-z0-9]+/g)?.filter(word => word.length > 2 && !stop.has(word)) || [];
+      return notes.map(note => {
+        const title = note.title.toLowerCase(), category = note.category.toLowerCase(), text = `${note.summary} ${note.text}`.toLowerCase();
+        const score = terms.reduce((sum, word) => sum + (title.includes(word) ? 5 : 0) + (category.includes(word) ? 3 : 0) + (text.includes(word) ? 1 : 0), 0);
+        return {note, score};
+      }).filter(item => item.score > 0).sort((a,b) => b.score-a.score).slice(0,5);
+    }
+    function showResults(query) {
+      byId('suggestions').hidden = true;
+      const matches = retrieve(query);
+      const content = matches.length ? `<div class="result-head"><div><div class="kicker">RETRIEVED FIELD NOTES</div><h3>For “${escapeHtml(query)}”</h3></div><span class="result-count">${matches.length} MATCH${matches.length===1?'':'ES'}</span></div><div class="results">${matches.map(({note}, index) => `<article class="result"><div class="result-index">${String(index+1).padStart(2,'0')}</div><div><div class="result-meta"><span>${escapeHtml(note.category)}</span><span class="source-type">NASA · VERIFIED REFERENCE</span></div><h4>${escapeHtml(note.title)}</h4><p>${escapeHtml(note.text)}</p><a href="${escapeHtml(note.url)}" target="_blank" rel="noreferrer">${escapeHtml(note.source)} ↗</a></div></article>`).join('')}</div>` : `<div class="empty"><span class="big">◎</span><h3>No close matches yet</h3><p>Try a planet, galaxy type, telescope, or astronomy term from the field guide.</p></div>`;
+      byId('answer').innerHTML = content;
+    }
+    byId('ask-form').addEventListener('submit', event => {event.preventDefault();const query=byId('question').value.trim();if(query)showResults(query)});
+    document.querySelectorAll('.suggestion-list button').forEach(button => button.addEventListener('click', () => {byId('question').value=button.textContent;showResults(button.textContent)}));
+
+    function renderLibrary() {
+      const query = byId('library-query').value.trim().toLowerCase(), category = byId('category').value;
+      const filtered = notes.filter(note => (category==='All topics'||note.category===category) && `${note.title} ${note.category} ${note.summary} ${note.text}`.toLowerCase().includes(query));
+      byId('library-count').textContent = `SHOWING ${filtered.length} OF ${notes.length} NOTES`;
+      byId('library-list').innerHTML = filtered.length ? filtered.map((note,index) => `<article class="library-item"><span class="library-index">${String(index+1).padStart(2,'0')}</span><div><span class="category">${escapeHtml(note.category)}</span><h4>${escapeHtml(note.title)}</h4><p>${escapeHtml(note.summary)}</p></div><a href="${escapeHtml(note.url)}" target="_blank" rel="noreferrer" aria-label="Open source for ${escapeHtml(note.title)}">↗</a></article>`).join('') : '<div class="empty"><h3>No notes match that filter</h3><p>Try another word or choose All topics.</p></div>';
+    }
+    byId('library-query').addEventListener('input',renderLibrary);
+    byId('category').addEventListener('change',renderLibrary);
+    renderLibrary();
+
+    let imageController;
+    let selectedImageUrl = '';
+    let selectedImageFile = null;
+    let classifierPromise;
+    async function loadClassifier() {
+      if (!classifierPromise) classifierPromise = (async () => {
+        const {pipeline} = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.1');
+        const progressCallback = progress => {
+          if (progress.status === 'progress') byId('identify-status').textContent = `Downloading the space-image model: ${progress.file || 'model weights'}…`;
+          else if (progress.status === 'done') byId('identify-status').textContent = 'Preparing the space-image model…';
+        };
+        if (navigator.gpu) {
+          try {
+            return await pipeline('zero-shot-image-classification', 'Xenova/clip-vit-base-patch32', {dtype: 'q4f16', device: 'webgpu', progress_callback: progressCallback});
+          } catch {
+            byId('identify-status').textContent = 'GPU analysis is unavailable; switching to the slower CPU model…';
+          }
+        }
+        return pipeline('zero-shot-image-classification', 'Xenova/clip-vit-base-patch32', {dtype: 'q4', progress_callback: progressCallback});
+      })().catch(error => {
+        classifierPromise = undefined;
+        throw new Error(`Could not load the image model. Check your connection and try Analyze Image again. ${error.message || ''}`);
+      });
+      return classifierPromise;
+    }
+    const imageCandidates = [
+      {label:'Mercury, a small gray rocky planet covered in impact craters',name:'Mercury',query:'Mercury',kind:'space'},
+      {label:'Venus, a pale rocky planet covered by thick clouds',name:'Venus',query:'Venus',kind:'space'},
+      {label:'Earth, the blue planet with oceans and white clouds seen from space',name:'Earth',query:'Earth',kind:'space'},
+      {label:'Mars, a red rocky planet with a dusty surface',name:'Mars',query:'Mars',kind:'space'},
+      {label:'Jupiter, a giant gas planet with colorful cloud bands and the Great Red Spot',name:'Jupiter',query:'Jupiter',kind:'space'},
+      {label:'Saturn, a gas giant planet surrounded by broad icy rings',name:'Saturn',query:'Saturn',kind:'space'},
+      {label:'Uranus, a pale blue-green ice giant planet',name:'Uranus',query:'Uranus',kind:'space'},
+      {label:'Neptune, a deep blue ice giant planet',name:'Neptune',query:'Neptune',kind:'space'},
+      {label:'Pluto, a small icy dwarf planet',name:'Pluto',query:'Pluto',kind:'space'},
+      {label:'A lunar landscape photographed by an Apollo astronaut, showing the Moon surface and Earthrise above the Moon horizon',name:'The Moon',query:'Moon',kind:'space'},
+      {label:'The Sun, our star with a bright surface and solar flares',name:'The Sun',query:'The Sun',kind:'space'},
+      {label:'A star field with many distant points of starlight in deep space',name:'A star field',query:'stars',kind:'space'},
+      {label:'A deep-space telescope image of a spiral galaxy like Andromeda or the Milky Way, billions of stars in a curved disk',name:'A spiral galaxy',query:'spiral galaxies',kind:'space'},
+      {label:'An elliptical galaxy, a smooth oval cloud of stars',name:'An elliptical galaxy',query:'elliptical galaxies',kind:'space'},
+      {label:'An irregular galaxy with a distorted shape',name:'An irregular galaxy',query:'irregular galaxies',kind:'space'},
+      {label:'A colorful nebula, a cloud of gas and dust between stars',name:'A nebula',query:'nebulae',kind:'space'},
+      {label:'A supernova remnant, expanding gas left by an exploding star',name:'A supernova remnant',query:'supernovae',kind:'space'},
+      {label:'A comet with a glowing coma and a long tail in space',name:'A comet',query:'comets',kind:'space'},
+      {label:'An asteroid, a small irregular rocky body in space',name:'An asteroid',query:'asteroids',kind:'space'},
+      {label:'A meteor or bright meteor streak in the night sky',name:'A meteor',query:'meteors',kind:'space'},
+      {label:'An aurora glowing above a planet',name:'An aurora',query:'auroras',kind:'space'},
+      {label:'An astronaut wearing a spacesuit in space',name:'An astronaut',query:'astronaut',kind:'space'},
+      {label:'A spacecraft or space telescope orbiting a planet',name:'A spacecraft',query:'space telescope',kind:'space'},
+      {label:'A rocket lifting off into space',name:'A rocket',query:'rocket',kind:'space'},
+      {label:'A satellite orbiting Earth',name:'A satellite',query:'satellite',kind:'space'},
+      {label:'An ordinary photograph of a cat, an animal on Earth',name:'A cat',kind:'not-space'},
+      {label:'An ordinary photograph of a person indoors',name:'A person',kind:'not-space'},
+      {label:'An ordinary photograph of food or a meal',name:'Food',kind:'not-space'},
+      {label:'An ordinary photograph of a vehicle on Earth',name:'A vehicle',kind:'not-space'},
+      {label:'An ordinary photograph of a landscape or city on Earth',name:'A landscape',kind:'not-space'},
+      {label:'An ordinary photograph of an everyday object indoors',name:'An everyday object',kind:'not-space'}
+    ];
+    const imageFactTitles = {
+      Mercury:'Mercury', Venus:'Venus', Earth:'Earth', Mars:'Mars', Jupiter:'Jupiter', Saturn:'Saturn', Uranus:'Uranus', Neptune:'Neptune', Pluto:'Pluto and dwarf planets',
+      'The Moon':'Earth’s Moon', 'The Sun':'The Sun', 'A star field':'How stars live and die', 'A spiral galaxy':'Spiral galaxies',
+      'An elliptical galaxy':'Elliptical galaxies', 'An irregular galaxy':'Irregular galaxies', 'A nebula':'Nebulae', 'A supernova remnant':'Supernovae',
+      'A comet':'Comets', 'An asteroid':'Asteroids', 'An aurora':'Auroras', 'A spacecraft':'James Webb Space Telescope'
+    };
+    function imageFactNote(candidate) {
+      const title = imageFactTitles[candidate.name];
+      return title ? notes.find(note => note.title.toLowerCase() === title.toLowerCase()) : undefined;
+    }
+    async function searchNasaForImage(query) {
+      const params = new URLSearchParams({q: query, media_type: 'image', page_size: '6'});
+      const response = await fetch(`https://images-api.nasa.gov/search?${params}`);
+      if (!response.ok) throw new Error('NASA’s image catalog is unavailable right now. Try again in a moment.');
+      const payload = await response.json();
+      const items = (payload.collection?.items || []).flatMap(item => {
+        const data = item.data?.[0];
+        const image = item.links?.find(link => link.render === 'image' || link.rel === 'preview')?.href;
+        if (!data?.nasa_id || !image) return [];
+        return [{title: data.title || 'NASA image', description: (data.description || 'NASA catalog image related to this object.').replace(/\s+/g, ' ').slice(0, 620), image, url: `https://images.nasa.gov/details/${encodeURIComponent(data.nasa_id)}`}];
+      });
+      return items;
+    }
+    byId('space-image').addEventListener('change', event => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const extension = file.name.toLowerCase().split('.').pop();
+      const validMime = extension === 'jpg' || extension === 'jpeg' ? ['image/jpeg','image/jpg'].includes(file.type) : extension === 'png' ? file.type === 'image/png' : extension === 'webp' && file.type === 'image/webp';
+      if (!['jpg','jpeg','png','webp'].includes(extension) || !validMime) {
+        byId('identify-button').disabled = true;
+        byId('identify-status').textContent = 'Choose a JPG, JPEG, PNG, or WEBP image.';
+        byId('identify-status').classList.add('identify-error');
+        byId('identify-results').innerHTML = '';
+        return;
+      }
+      if (selectedImageUrl) URL.revokeObjectURL(selectedImageUrl);
+      selectedImageFile = file;
+      selectedImageUrl = URL.createObjectURL(file);
+      byId('identify-button').disabled = false;
+      byId('identify-status').classList.remove('identify-error');
+      byId('identify-status').textContent = `${file.name} selected. Select Analyze image to continue.`;
+      byId('identify-results').innerHTML = `<img class="identify-preview" src="${selectedImageUrl}" alt="Selected space image">`;
+    });
+    byId('identify-button').addEventListener('click', async () => {
+      if (!selectedImageFile) return;
+      const button = byId('identify-button');
+      button.disabled = true;
+      button.classList.add('busy');
+      button.textContent = 'Analyzing…';
+      byId('identify-status').classList.remove('identify-error');
+      byId('identify-status').textContent = `Loading the space-image model${navigator.gpu ? ' for GPU analysis' : ''}. The first download is about ${navigator.gpu ? '126' : '190'} MB; later analyses reuse the browser cache.`;
+      try {
+        const model = await loadClassifier();
+        byId('identify-status').textContent = 'Comparing the image with space objects and everyday scenes…';
+        const predictions = await model(selectedImageFile, imageCandidates.map(candidate => candidate.label), {top_k: 3});
+        const best = predictions[0];
+        const next = predictions[1];
+        const candidate = imageCandidates.find(item => item.label === best?.label);
+        const margin = best && next ? best.score - next.score : 0;
+        let resultMarkup = '';
+        if (!candidate) {
+          resultMarkup = '<p class="identify-message">I could not analyze this image. Try another JPG, JPEG, PNG, or WEBP file.</p>';
+        } else if (candidate.kind === 'not-space' && best.score >= 0.3 && margin >= 0.08) {
+          resultMarkup = `<article class="identify-explanation"><h4>This does not appear to be a space image</h4><p>The image looks most like ${escapeHtml(candidate.name.toLowerCase())}. Try a photo of a planet, moon, star, galaxy, nebula, or spacecraft.</p></article>`;
+        } else if (best.score < 0.22 || margin < 0.04) {
+          const alternative = next ? imageCandidates.find(item => item.label === next.label) : null;
+          const possibilities = [candidate.name, alternative?.name].filter(Boolean).map(escapeHtml).join(' or ');
+          resultMarkup = `<article class="identify-explanation"><h4>Uncertain image match</h4><p>This may show ${possibilities || 'a space object'}, but the image does not match one category clearly enough for reliable facts. Try a sharper image with the object filling more of the frame.</p></article>`;
+        } else if (candidate.kind === 'not-space') {
+          resultMarkup = `<article class="identify-explanation"><h4>Uncertain image match</h4><p>The image may show ${escapeHtml(candidate.name.toLowerCase())}, but I cannot confidently tell whether it is space-related.</p></article>`;
+        } else {
+          const contextNote = imageFactNote(candidate);
+          const explanation = contextNote
+            ? `<article class="identify-explanation"><h4>Likely match: ${escapeHtml(candidate.name)}</h4><p>${escapeHtml(contextNote.text)}</p><a href="${escapeHtml(contextNote.url)}" target="_blank" rel="noreferrer">Read the fact source</a></article>`
+            : `<article class="identify-explanation"><h4>Likely category: ${escapeHtml(candidate.name)}</h4><p>The image resembles ${escapeHtml(candidate.label.toLowerCase())}. There is not a detailed fact note for this category in the current guide, so I will not guess at its properties.</p></article>`;
+          let relatedImages = [];
+          let catalogMessage = '';
+          try {
+            relatedImages = await searchNasaForImage(candidate.query || candidate.name);
+          } catch {
+            catalogMessage = '<p class="identify-message">NASA’s related image catalog could not be reached, but the local fact explanation is still available.</p>';
+          }
+          const relatedMarkup = relatedImages.length
+            ? `<h4>Related NASA images</h4>${relatedImages.slice(0,3).map(item => `<article class="identify-match"><img src="${escapeHtml(item.image)}" alt=""><div><h4>${escapeHtml(item.title)}</h4><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">Open NASA image</a></div></article>`).join('')}`
+            : '';
+          resultMarkup = `${explanation}${relatedMarkup}${catalogMessage}`;
+        }
+        byId('identify-results').innerHTML = `<div class="identify-output"><img class="identify-preview" src="${selectedImageUrl}" alt="Your uploaded space image"><div><h4>Image analysis</h4>${resultMarkup}<p class="identify-message">This is a visual estimate, not a confirmed identification. Images are analyzed in your browser.</p></div></div>`;
+        byId('identify-status').textContent = 'Analysis complete.';
+      } catch(error) {
+        byId('identify-status').classList.add('identify-error');
+        byId('identify-status').textContent = error.message || 'Image analysis failed. Check your connection and try again.';
+      } finally {
+        button.disabled = false;
+        button.classList.remove('busy');
+        button.textContent = 'Analyze image';
+      }
+    });
+    async function searchImages(query) {
+      if(imageController) imageController.abort();
+      imageController = new AbortController();
+      byId('gallery-count').textContent = 'SEARCHING';
+      byId('gallery').innerHTML = '<div class="loading"><span><span class="spinner">◌</span>Looking through NASA’s archive…</span></div>';
+      try {
+        const params = new URLSearchParams({q:query,media_type:'image',page_size:'16'});
+        const response = await fetch(`https://images-api.nasa.gov/search?${params}`,{signal:imageController.signal});
+        if(!response.ok) throw new Error('NASA image search is temporarily unavailable.');
+        const data = await response.json();
+        const images = (data.collection?.items||[]).flatMap(item => {
+          const meta=item.data?.[0], preview=item.links?.find(link=>link.render==='image'||link.rel==='preview')?.href;
+          if(!meta?.nasa_id||!preview)return [];
+          return [{id:meta.nasa_id,title:meta.title||'NASA image',date:meta.date_created?.slice(0,10)||'',image:preview}];
+        });
+        byId('gallery-count').textContent = `${images.length} RESULTS`;
+        byId('gallery').innerHTML = images.length ? `<div class="gallery">${images.map(image=>`<a class="image-card" href="https://images.nasa.gov/details/${encodeURIComponent(image.id)}" target="_blank" rel="noreferrer"><img src="${escapeHtml(image.image)}" alt="${escapeHtml(image.title)}" loading="lazy"><h4>${escapeHtml(image.title)}</h4><small>${escapeHtml(image.date||'NASA MEDIA LIBRARY')}</small></a>`).join('')}</div>` : '<div class="empty"><span class="big">▧</span><h3>No images found</h3><p>Try a broader phrase like Jupiter, galaxy, or space telescope.</p></div>';
+      } catch(error) {
+        if(error.name==='AbortError')return;
+        byId('gallery-count').textContent = 'CONNECTION NEEDED';
+        byId('gallery').innerHTML = `<div class="empty"><span class="big">◎</span><h3>Couldn’t reach the image archive</h3><p>${escapeHtml(error.message||'Check your internet connection and try again.')}</p></div>`;
+      }
+    }
+    byId('image-form').addEventListener('submit',event=>{event.preventDefault();const query=byId('image-query').value.trim();if(query)searchImages(query)});
+    document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>{
+      const tab=button.dataset.tab;
+      document.querySelectorAll('[data-tab]').forEach(item=>{item.classList.toggle('active',item.dataset.tab===tab);if(item.getAttribute('role')==='tab')item.setAttribute('aria-selected',String(item.dataset.tab===tab))});
+      ['ask','images','identify','library'].forEach(name=>byId(`${name}-panel`).hidden=name!==tab);
+      if(tab==='images'&&!byId('gallery').dataset.loaded){byId('gallery').dataset.loaded='true';searchImages(byId('image-query').value)}
+      if(tab==='library')renderLibrary();
+    }));
+    byId('new-search').addEventListener('click',()=>{document.querySelector('[data-tab="ask"]').click();byId('question').value='';byId('answer').innerHTML='';byId('suggestions').hidden=false;byId('question').focus()});
+  </script>
+</body>
+</html>
